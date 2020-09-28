@@ -9,6 +9,7 @@ s.SyncTimeframe()
 s.SyncTeam()
 s.SyncSchedule()
 s.SyncStanding()
+s.SyncPlayer()
 
 if __name__ == '__main__':
     app.run()

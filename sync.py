@@ -3,6 +3,7 @@ from timeframeSync import Timeframe
 from teamSync import Team
 from scheduleSync import Schedule
 from standingsSync import Standings
+from playerSync import Player
 import requests
 
 class Sync():
@@ -33,3 +34,10 @@ class Sync():
         for i in res.json():
             standings = Standings.from_json(i)
             standings.post_standings()
+
+    @staticmethod
+    def SyncPlayer():
+        res = requests.get('https://api.sportsdata.io/v3/nfl/scores/json/Players?key=c4f34674f7e84173a3ee66d91abae1ab')
+        for i in res.json():
+            player = Player.from_json(i)
+            player.post_player()
