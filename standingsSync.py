@@ -34,7 +34,7 @@ class Standings(object):
             "team, name, wins, losses]}) { affected_rows } }"
         }
 
-        requests.post('https://fantasy-feed-hasura-dev.herokuapp.com/v1/graphql', json=dictToSend)
+        requests.post('https://ff-data-api-dev.herokuapp.com/v1/graphql', json=dictToSend)
 
     @classmethod
     def from_json(cls, json_string):

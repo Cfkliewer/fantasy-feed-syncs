@@ -33,14 +33,13 @@ class Player(object):
 
     def post_player(self):
         dictToSend = {
-            "query": "mutation { insert_PlayerSync(objects: {" + 
+            "query": "mutation { insert_SportIOPlayer(objects: {" + 
             f"player_id: {self.player_id}, team_id: {self.team_id}, global_team_id: {self.global_team_id}, team: \"{self.team}\", first_name: \"{self.first_name}\"," + 
             f"last_name: \"{self.last_name}\", age: {self.age}, number: {self.number}, position: \"{self.position}\", height_feet: {self.height_feet}, height_inches: {self.height_inches}, weight: {self.weight}, bye_week: {self.bye_week}" +
-            "}, on_conflict: { constraint: PlayerSync_pkey, update_columns: [team_id, global_team_id, team, first_name, last_name, age, number, position, height_inches, height_feet, weight, bye_week]}) { affected_rows } }"
+            "}, on_conflict: { constraint: SportIOPlayer_pkey, update_columns: [team_id, global_team_id, team, first_name, last_name, age, number, position, height_inches, height_feet, weight, bye_week]}) { affected_rows } }"
         }
 
-        print(dictToSend)
-        requests.post('https://fantasy-feed-hasura-dev.herokuapp.com/v1/graphql', json=dictToSend)
+        requests.post('https://ff-data-api-dev.herokuapp.com/v1/graphql', json=dictToSend)
 
     @classmethod
     def from_json(cls, json_string):

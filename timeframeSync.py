@@ -25,9 +25,9 @@ class Timeframe(object):
         dictToSend = {
 	        "query" : "mutation { insert_Timeframe(objects: {" + 
             f"week: {self.week}, season_type: {self.season_type}, season: \"{self.season}\", has_started: \"{self.has_started}\", has_games: \"{self.has_games}\", has_ended: \"{self.has_ended}\", api_week: \"{self.api_week}\", api_season: \"{self.api_season}\""
-             + "}, on_conflict: {" + "constraint: Timeframe_season_key, update_columns: [season_type, has_ended, has_games, has_started, week, api_week, api_season]}){ affected_rows }}"
+             + "}, on_conflict: {" + "constraint: Timeframe_pkey, update_columns: [season_type, has_ended, has_games, has_started, week, api_week, api_season]}){ affected_rows }}"
         }
-        requests.post('https://fantasy-feed-hasura-dev.herokuapp.com/v1/graphql', json=dictToSend)
+        requests.post('https://ff-data-api-dev.herokuapp.com/v1/graphql', json=dictToSend)
 
     @classmethod
     def from_json(cls, json_string):

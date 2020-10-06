@@ -38,7 +38,7 @@ class Schedule(object):
             "}, on_conflict: { constraint: Schedule_pkey, update_columns: [date_time, week, season_type, season, status, home_team, away_team," + 
             "global_game_id, global_home_team_id, global_away_team_id]}) { affected_rows } }"
         }
-        requests.post('https://fantasy-feed-hasura-dev.herokuapp.com/v1/graphql', json=dictToSend)
+        requests.post('https://ff-data-api-dev.herokuapp.com/v1/graphql', json=dictToSend)
 
     @classmethod
     def from_json(cls, json_string):
